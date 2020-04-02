@@ -1,0 +1,13 @@
+#Made by BGHDNetwork(Noodles)
+#=======================================================
+#Plugin Page: https://www.spigotmc.org/resources/22841
+#=======================================================
+Update:
+  Enabled: true
+#sbf.update
+#Enables if there is a message on-join when the plugin is outdated. 
+#=======================================================
+Messages:
+  Message: '&cYou are not allowed to fill this bucket!'
+#Set to '' to disable
+#=======================================================
