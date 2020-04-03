@@ -1,0 +1,5 @@
+name: StopBucketFill
+version: ${project.version}
+main: me.noodles.sbf.SBF
+authors: [BGHDDevelopment]
+website: https://bghddevelopment.com/

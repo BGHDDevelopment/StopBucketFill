@@ -4,11 +4,11 @@ import java.io.*;
 
 public class UpdateChecker
 {
-    public MainSBF plugin;
+    public SBF plugin;
     public String version;
     
     
-    public UpdateChecker(MainSBF plugin) {
+    public UpdateChecker(SBF plugin) {
         this.plugin = plugin;
         this.version = this.getLatestVersion();
     }

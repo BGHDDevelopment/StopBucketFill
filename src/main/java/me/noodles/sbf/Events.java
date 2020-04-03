@@ -12,11 +12,11 @@ public class Events implements Listener
 	String Message;
 	
 	 public Events() {
-	        this.Message = ChatColor.translateAlternateColorCodes('&', MainSBF.getPlugin().getConfig().getString("Messages.Message"));
+	        this.Message = ChatColor.translateAlternateColorCodes('&', SBF.getPlugin().getConfig().getString("Messages.Message"));
 	
 	 } 
 	
-    public Events(final MainSBF plugin) {
+    public Events(final SBF plugin) {
         plugin.getServer().getPluginManager().registerEvents((Listener)this, (Plugin)plugin);
     }
     
