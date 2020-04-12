@@ -1,9 +1,11 @@
 package me.noodles.sbf;
 
+import me.noodles.sbf.commands.SBFCommand;
 import me.noodles.sbf.listeners.PlayerEvents;
 import me.noodles.sbf.listeners.UpdateJoinEvent;
 import me.noodles.sbf.utilities.UpdateChecker;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -24,6 +26,7 @@ public final class SBF extends JavaPlugin implements Listener {
         this.getLogger().info("StopBucketFill V" + VarUtilType.getVersion() + " starting...");
         this.saveDefaultConfig();
         this.reloadConfig();
+        this.registerCommand("sbf", new SBFCommand(this));
         registerEvents(this, new UpdateJoinEvent(this), new PlayerEvents(this));
         registerEvents(this, this);
         this.getLogger().info("StopBucketFill V" + VarUtilType.getVersion() + " started!");
@@ -48,6 +51,10 @@ public final class SBF extends JavaPlugin implements Listener {
         for (final Listener listener : listeners) {
             Bukkit.getServer().getPluginManager().registerEvents(listener, plugin);
         }
+    }
+
+    private void registerCommand(final String command, final CommandExecutor executor) {
+        this.getCommand(command).setExecutor(executor);
     }
 
     public static SBF getPlugin() {

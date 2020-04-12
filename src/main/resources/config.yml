@@ -15,3 +15,5 @@ Messages:
   Message: '&cYou are not allowed to fill this bucket!'
 #Set to '' to disable
 #=======================================================
+#Plugin Commands:
+# /sbf - sbf.reload
