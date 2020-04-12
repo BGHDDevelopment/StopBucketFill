@@ -7,6 +7,10 @@ Update:
 #sbf.update
 #Enables if there is a message on-join when the plugin is outdated. 
 #=======================================================
+CheckForUpdates:
+  Enabled: true
+#Enables a message in console if the plugin is outdated.
+#=======================================================
 Messages:
   Message: '&cYou are not allowed to fill this bucket!'
 #Set to '' to disable

@@ -1,5 +1,7 @@
 package me.noodles.sbf;
 
+import me.noodles.sbf.listeners.UpdateJoinEvent;
+import me.noodles.sbf.utilities.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -21,26 +23,24 @@ public final class SBF extends JavaPlugin implements Listener {
         this.getLogger().info("StopBucketFill V" + VarUtilType.getVersion() + " starting...");
         this.saveDefaultConfig();
         this.reloadConfig();
-        registerEvents((Plugin)this, new UpdateJoinEvent());
+        registerEvents((Plugin)this, new UpdateJoinEvent(this));
         registerEvents((Plugin)this, new Events());
         registerEvents(this, this);
         this.getLogger().info("StopBucketFill V" + VarUtilType.getVersion() + " started!");
         this.setEnabled(true);
         this.getLogger().info("StopBucketFill V" + VarUtilType.getVersion() + " checking for updates...");
-        this.checker = new UpdateChecker(this);
-        if (this.checker.isConnected()) {
-            if (this.checker.hasUpdate()) {
-                getServer().getConsoleSender().sendMessage("------------------------");
-                getServer().getConsoleSender().sendMessage("StopBucketFill is outdated!");
-                getServer().getConsoleSender().sendMessage("Newest version: " + this.checker.getLatestVersion());
-                getServer().getConsoleSender().sendMessage("Your version: " + SBF.plugin.getDescription().getVersion());
-                getServer().getConsoleSender().sendMessage("Please Update Here: https://www.spigotmc.org/resources/46678");
-                getServer().getConsoleSender().sendMessage("------------------------");
-            }
-            else {
-                getServer().getConsoleSender().sendMessage("------------------------");
-                getServer().getConsoleSender().sendMessage("StopBucketFill is up to date!");
-                getServer().getConsoleSender().sendMessage("------------------------");            }
+
+        if (getConfig().getBoolean("CheckForUpdates.Enabled", true)) {
+            new UpdateChecker(this, 22841).getLatestVersion(remoteVersion -> {
+                getLogger().info("Checking for Updates ...");
+
+                if (getDescription().getVersion().equalsIgnoreCase(remoteVersion)) {
+                    getLogger().info("No new version available");
+                } else {
+                    getLogger().warning(String.format("Newest version: %s is out! You are running version: %s", remoteVersion, getDescription().getVersion()));
+                    getLogger().warning("Please Update Here: http://www.spigotmc.org/resources/22841");
+                }
+            });
         }
     }
 
