@@ -1,9 +1,5 @@
 name: StopBucketFill
-version: ${project.version}
-main: me.noodles.sbf.SBF
-authors: [BGHDDevelopment]
+version: 3.1
+main: com.bghddevelopment.bukkit.SBF
+author: BGHDDevelopmentLLC
 website: https://bghddevelopment.com/
-commands:
-  sbf:
-    description: SBF command
-    usage: /<command> reload
